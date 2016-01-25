@@ -1,6 +1,7 @@
 # Week 2
 
-As always: make a copy of this repository to commit changes to
+*As always: make a copy of this repository to commit changes to*
+
 ## Week 1 Review
 
 ### Git/Github addendum
@@ -12,20 +13,14 @@ As always: make a copy of this repository to commit changes to
 - Conditions
 - Arrays
 
-### Lab 1
-1. Open [the first javascript lab work](/lab/lab1/part1-types.html) in atom and your browser
-
 ## Javascript Functions
 - Organization
 - Composition
 - Side-effects/purity
 
-### Lab 2
-
-
-## Underscore
-
-### Lab 3
+## Underscore & Imports
+- API exploration
+- Mapping; filtering
 
 ## Assignment
 
@@ -48,7 +43,7 @@ zip codes from 19140 to 19149 (inclusive).
 Second, we'd like to provide users with the ability to export our data
 in a simplified CSV format. We can provide this to them in console printouts.
 * On application start, console.log EITHER:
-    * An array for the keys and an array for each 'row'
+    * An array for the keys and an array for each 'row' OR
     * An array of arrays in which the first sub-array contains keys and
       the rest of the arrays contain the 'rows' of our CSV
 
