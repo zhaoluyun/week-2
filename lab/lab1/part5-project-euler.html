@@ -26,9 +26,31 @@
     Start code
 
     ===================== */
+//problem 1
+var sum = 0
+for (var i=0; i<1000; i++) {
+  if ((i%3===0)||(i%5===0)){
+    sum=sum+i
+  }
+}
+console.log(sum)
 
 
+//problem2
+var sumeven = 0
 
+var Fibonacci = [1,2,3]
+for (var i=3; i<100; i++){
+  Fibonacci.push(Fibonacci[i-1]+Fibonacci[i-2])
+}
+console.log(Fibonacci)
+
+for (var i=0; i<Fibonacci.length; i++){
+  if(Fibonacci[i]<=4000000 && Fibonacci[i]%2===0){
+    sumeven+=Fibonacci[i]
+  }
+}
+console.log(sumeven)
     /* =====================
 
     End code

@@ -50,23 +50,26 @@
     Without modifying part4-data-dirty.js, change your code to account for the dirty data.
 
     ===================== */
-
-    var data = bikeArrayClean;
+// Deal with dirty data
+    var data = bikeArrayDirty
 
     /* =====================
 
     Start code to filter data
 
     ===================== */
-var dataFiltered =[]
+
+    var dataFiltered =[]
 
 
-for (var i=0; i<data.length; i++) {
-  if (data[i][3] > 20) {
-    dataFiltered.push(data[i]);
-  }
-}
-console.log(dataFiltered)
+    for (var i=0; i<data.length; i++) {
+      if ((parseInt(data[i][3]) > 20)&&(data[i].length===4)) {
+        dataFiltered.push(data[i]);
+      }
+    }
+    console.log(dataFiltered)
+
+
 
     /* =====================
 
@@ -96,7 +99,7 @@ console.log(dataFiltered)
 
     for (var i=0; i<dataFiltered.length; i++) {
 
-      L.marker([dataFiltered[i][1],dataFiltered[i][0]]).bindPopup(dataFiltered[i][2]).addTo(map)
+      L.marker([parseFloat(dataFiltered[i][1]),parseFloat(dataFiltered[i][0])]).bindPopup(dataFiltered[i][2]).addTo(map)
     }
 
     /* =====================

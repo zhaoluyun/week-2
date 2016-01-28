@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--stylesheet imports-->
+    <link rel="stylesheet" href="leaflet.css" />
+  </head>
+  <body>
+
+    <!--left panel-->
+    <div style="position: absolute; left: 0px; width: 400px; top: 0; bottom: 0;"></div>
+    <!--map-->
+    <div id="map" style="position: absolute; right: 0; left: 400px; top: 0; bottom: 0;"></div>
+
+    <!--javascript imports-->
+    <script src="leaflet.js"></script>
+    <script src="part2-data-dirty.js"></script>
+
+    <script>
+
+
+// Deal with dirty data using functions
+var data = bikeArrayDirty
+
+
+
+//A purefunction to clean data
+var cleandata = []
+    var clean = function (i){
+      if (data[i].length===4) {
+        return[parseFloat(data[i][0]),parseFloat(data[i][1]),data[i][2],parseInt(data[i][3])]
+      }
+    }
+
+for (var i=0; i<data.length; i++) {
+  if (clean(i)!=undefined) {
+    cleandata.push(clean(i))
+  }
+}
+
+console.log(cleandata)
+
+
+//A purefunction to create leaflet objects from 'clean' data
+var leaflet = function (i) {
+    if (cleandata[i][3] > 20) {
+      return cleandata[i]
+  }
+}
+
+//filter values
+var dataFiltered =[]
+  for (var i=0; i<cleandata.length; i++) {
+    if (leaflet(i)!=undefined) {
+      dataFiltered.push(leaflet(i))
+    }
+  }
+
+
+console.log(dataFiltered)
+
+
+
+    var map = L.map('map', {
+      center: [39.9522, -75.1639],
+      zoom: 14
+    });
+
+    var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      ext: 'png'
+    }).addTo(map);
+
+    /* =====================
+
+    Start code to add markers to map
+
+    ===================== */
+
+//A function to place those objects on the map
+var place = function () {
+    for (var i=0; i<dataFiltered.length; i++) {
+      L.marker([dataFiltered[i][1],dataFiltered[i][0]]).bindPopup(dataFiltered[i][2]).addTo(map)
+    }
+}
+place()
+    /* =====================
+
+    End code to add markers to map
+
+    ===================== */
+
+
+
+
+    </script>
+  </body>
+</html>

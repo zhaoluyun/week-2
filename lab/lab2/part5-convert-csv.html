@@ -36,9 +36,13 @@
       Start code
 
       ===================== */
-
-      console.log(healthCentersCSV)
-
+var str = healthCentersCSV
+var strarray=str.split(";")
+console.log(strarray)
+for (var i=0; i<strarray.length; i++) {
+      var row=strarray[i].split(",")
+      console.log(row)
+}
       /* =====================
 
       End code
